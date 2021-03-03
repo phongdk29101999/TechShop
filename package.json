@@ -22,9 +22,10 @@
   },
   "homepage": "https://github.com/phongdk29101999/TechShop#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.11.18"
+    "mongoose": "^5.11.15"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",
