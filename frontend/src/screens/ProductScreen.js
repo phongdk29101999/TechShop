@@ -12,10 +12,10 @@ const ProductScreen = ({ history, match }) => {
 
     const dispatch = useDispatch()
 
-    const productDetails = useSelector(state => state.productDetails)
+    const productDetails = useSelector((state) => state.productDetails)
 
-    const {loading, error, product } = productDetails
-    
+    const { loading, error, product } = productDetails
+
     useEffect(() => {
         dispatch(listProductDetails(match.params.id))
     }, [dispatch, match])
@@ -26,7 +26,9 @@ const ProductScreen = ({ history, match }) => {
 
     return (
         <>
-            <Link className='btn btn-light my-3' to='/'>Go Back</Link>
+            <Link className='btn btn-light my-3' to='/'>
+                Go Back
+            </Link>
             {loading ? (
                 <Loader />
             ) : error ? (
@@ -34,7 +36,7 @@ const ProductScreen = ({ history, match }) => {
             ) : (
                 <Row>
                     <Col md={6}>
-                        <Image src={product.image} alt={product.name} fluid/>
+                        <Image src={product.image} alt={product.name} fluid />
                     </Col>
                     <Col md={3}>
                         <ListGroup variant='flush'>
@@ -42,7 +44,10 @@ const ProductScreen = ({ history, match }) => {
                                 <h3>{product.name}</h3>
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <Rating value={product.rating} text={`${product.numReviews} reviews`}/>
+                                <Rating
+                                    value={product.rating}
+                                    text={`${product.numReviews} reviews`}
+                                />
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 Price: ${product.price}
@@ -57,9 +62,7 @@ const ProductScreen = ({ history, match }) => {
                             <ListGroup variant='flush'>
                                 <ListGroup.Item>
                                     <Row>
-                                        <Col>
-                                            Price: 
-                                        </Col>
+                                        <Col>Price:</Col>
                                         <Col>
                                             <strong>${product.price}</strong>
                                         </Col>
@@ -68,11 +71,11 @@ const ProductScreen = ({ history, match }) => {
 
                                 <ListGroup.Item>
                                     <Row>
+                                        <Col>Status:</Col>
                                         <Col>
-                                            Status: 
-                                        </Col>
-                                        <Col>
-                                            {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
+                                            {product.countInStock > 0
+                                                ? 'In Stock'
+                                                : 'Out Of Stock'}
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
@@ -82,9 +85,24 @@ const ProductScreen = ({ history, match }) => {
                                         <Row>
                                             <Col>Qty</Col>
                                             <Col>
-                                                <Form.Control as='select' value={qty} onChange={(e) => setQty(e.target.value)}>
-                                                    {[...Array(product.countInStock).keys()].map(x => (
-                                                        <option key={x + 1} value={x + 1}>{x + 1}</option>
+                                                <Form.Control
+                                                    as='select'
+                                                    value={qty}
+                                                    onChange={(e) =>
+                                                        setQty(e.target.value)
+                                                    }
+                                                >
+                                                    {[
+                                                        ...Array(
+                                                            product.countInStock
+                                                        ).keys(),
+                                                    ].map((x) => (
+                                                        <option
+                                                            key={x + 1}
+                                                            value={x + 1}
+                                                        >
+                                                            {x + 1}
+                                                        </option>
                                                     ))}
                                                 </Form.Control>
                                             </Col>
@@ -93,10 +111,10 @@ const ProductScreen = ({ history, match }) => {
                                 )}
 
                                 <ListGroup.Item>
-                                    <Button 
-                                        className='btn-block' 
-                                        type='button' 
-                                        disabled={product.countInStock === 0} 
+                                    <Button
+                                        className='btn-block'
+                                        type='button'
+                                        disabled={product.countInStock === 0}
                                         onClick={addToCartHandler}
                                     >
                                         Add To Cart
@@ -106,7 +124,7 @@ const ProductScreen = ({ history, match }) => {
                         </Card>
                     </Col>
                 </Row>
-            )}  
+            )}
         </>
     )
 }

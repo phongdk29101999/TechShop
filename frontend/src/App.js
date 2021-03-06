@@ -8,19 +8,19 @@ import ProductScreen from './screens/ProductScreen'
 import CartScreen from './screens/CartScreen'
 
 const App = () => {
-  return (
-    <Router>
-      <Header className='py-3'/>
-      <main className='py-3'>
-        <Container>
-          <Route path='/' component={HomeScreen} exact />
-          <Route path='/product/:id' component={ProductScreen} />
-          <Route path='/cart/:id?' component={CartScreen} />
-        </Container>
-      </main>
-      <Footer/>
-    </Router>
-  );
+    return (
+        <Router>
+            <Header className='py-3' />
+            <main className='py-3'>
+                <Container>
+                    <Route path='/' component={HomeScreen} exact />
+                    <Route path='/product/:id' component={ProductScreen} />
+                    <Route path='/cart/:id?' component={CartScreen} />
+                </Container>
+            </main>
+            <Footer />
+        </Router>
+    )
 }
 
-export default App;
+export default App
