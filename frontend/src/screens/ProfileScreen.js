@@ -42,7 +42,8 @@ const ProfileScreen = ({ location, history }) => {
             } else {
                 setName(user.name)
                 setEmail(user.email)
-            }
+            }   
+
         }
     }, [dispatch, history, userInfo, user, success])
 
