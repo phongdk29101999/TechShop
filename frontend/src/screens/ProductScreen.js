@@ -46,10 +46,12 @@ const ProductScreen = ({ history, match }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(createProductReview(match.params.id, {
-      rating,
-      comment
-    }))
+    dispatch(
+      createProductReview(match.params.id, {
+        rating,
+        comment,
+      })
+    )
   }
 
   return (
@@ -157,7 +159,9 @@ const ProductScreen = ({ history, match }) => {
                 ))}
                 <ListGroup.Item>
                   <h2>Write a customer</h2>
-                  {errorProductReview && <Message variant='danger'>{errorProductReview}</Message>}
+                  {errorProductReview && (
+                    <Message variant='danger'>{errorProductReview}</Message>
+                  )}
                   {userInfo ? (
                     <Form onSubmit={submitHandler}>
                       <Form.Group controlId='rating'>
