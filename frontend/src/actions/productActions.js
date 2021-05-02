@@ -21,6 +21,7 @@ import {
   PRODUCT_TOP_REQUEST,
   PRODUCT_TOP_SUCCESS,
   PRODUCT_TOP_FAIL,
+  PRODUCT_DETAILS_UPDATE,
 } from '../constants/productConstants'
 
 export const listProducts = (keyword = '', pageNumber = '') => async (dispatch) => {
@@ -172,9 +173,12 @@ export const createProductReview = (productId, review) => async (
       },
     }
 
-    await axios.post(`/api/products/${productId}/reviews`, review, config)
+    const res = await axios.post(`/api/products/${productId}/reviews`, review, config)
 
     dispatch({ type: PRODUCT_CREATE_REVIEW_SUCCESS })
+    if (res && res?.status === 201) {
+      dispatch({ type: PRODUCT_DETAILS_UPDATE, payload: res.data.updatedProduct })
+    }
   } catch (error) {
     dispatch({
       type: PRODUCT_CREATE_REVIEW_FAIL,

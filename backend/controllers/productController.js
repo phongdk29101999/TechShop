@@ -135,8 +135,8 @@ const createProductReview = asyncHandler(async (req, res) => {
       product.reviews.reduce((acc, item) => item.rating + acc, 0) /
       product.reviews.length
 
-    await product.save()
-    res.status(201).json({ message: 'Review added' })
+    const updatedProduct = await product.save()
+    res.status(201).json({ message: 'Review added', updatedProduct })
   } else {
     res.status(404)
     throw new Error('Product not Found')
