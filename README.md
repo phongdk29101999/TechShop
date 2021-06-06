@@ -1,6 +1,10 @@
 # TechShop eCommerce Platform
 
 > eCommerce platform built with the MERN stack & Redux.
+
+This is the project that I use to learn about mern stack
+![screenshot](https://github.com/phongdk29101999/TechShop/blob/master/uploads/screen-shot-web-app.png)
+
 ## Features
 
 - Full featured shopping cart
